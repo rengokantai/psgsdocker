@@ -39,3 +39,35 @@ in mgr1:
 ```
 docker node promote 123
 ```
+wrk1-3:
+```
+docker swarm join --secret SAF --ca-hash sha256:1234 ip1:2377 --listen-addr ip4:2377
+docker swarm join --secret SAF --ca-hash sha256:1234 ip1:2377 --listen-addr ip5:2377
+docker swarm join --secret SAF --ca-hash sha256:1234 ip1:2377 --listen-addr ip6:2377
+```
+mgr1:
+```
+docker node ls
+```
+######18 swarm mode and microservice
+```
+docker service create/ls/tasks/inspect/update/rm
+```
+first,create service
+```
+docker service create --name name -p 8080:8080 --replicas 5 ubuntu
+docker service ls
+docker service tasks name
+docker service inspect name
+```
+```
+docker service scale ps-1=7
+```
+scale up
+```
+docker service update --replicas 10 ps-1
+```
+get tasks of a node
+```
+docker node tasks name
+```
